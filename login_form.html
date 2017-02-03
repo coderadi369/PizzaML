@@ -1,0 +1,34 @@
+<html>
+<head>
+<title>Login Form </title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+
+$(document).ready(function()
+	{
+           $('#button1').on('click',function(e) {
+           	  e.preventDefault();
+               var postData = $('#form1').serializeArray();
+           	   console.log(postData);
+               console.log("button is clicked");
+               $.ajax({
+            url: 'login_verifier.php',
+            type: "POST",
+            data: postData,
+            success: function(data, textStatus, jqXHR) {
+               console.log(data);}
+              });
+               
+           });
+	});
+	
+</script>
+</head>
+<body>
+<form id="form1">
+<input type="text" name="name"></input>
+<input type="password" name="pass"></input>
+<input type="submit" id="button1" value="submit">
+</form>
+</body>
+</html>
